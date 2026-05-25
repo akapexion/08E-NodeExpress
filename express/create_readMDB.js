@@ -33,4 +33,38 @@ const createUser = async() => {
     }
 }
 
-createUser();
+// createUser();
+
+
+const getUsers = async() => {
+    try{
+        const users = await user.find();
+
+        console.log("My Users:", users);
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+// getUsers();
+
+const updateUser = async(id, updatedData) => {
+    try{
+        await user.updateOne({_id: id}, {$set: updatedData});
+        console.log("Data updated successfully");
+    }   
+    catch(err){
+        console.log(err);
+    }
+}
+
+const id = "6a103a3321ff4fc3fff9001f";
+const updatedData = {
+    user_name : "Hassan",
+    user_email : "hassan@gmail.com"
+}
+
+updateUser(id, updatedData);
+
+
